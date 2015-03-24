@@ -6,6 +6,168 @@
                 android:paddingRight="@dimen/activity_horizontal_margin"
                 android:paddingTop="@dimen/activity_vertical_margin"
                 android:paddingBottom="@dimen/activity_vertical_margin"
-                tools:context=".MainMenu">
+                tools:context=".MainMenu"
+    android:onClick="libraryClicked"
+    android:nestedScrollingEnabled="true">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/contactsLayout"
+        android:focusableInTouchMode="false"
+        android:onClick="contactsClicked"
+        android:layout_marginLeft="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="42dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <ImageView
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:id="@+id/contactsMenuButton"
+            android:src="@mipmap/ic_launcher"
+            android:layout_alignTop="@+id/contactsLayout"
+            android:layout_alignLeft="@+id/newsMenuText"
+            android:layout_alignStart="@+id/newsMenuText" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/contacts_menu_text"
+            android:id="@+id/contactsMenuText"
+            android:gravity="center_horizontal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/timetableLayout"
+        android:onClick="timetableClicked"
+        android:layout_marginRight="44dp"
+        android:layout_marginEnd="44dp"
+        android:layout_alignTop="@+id/contactsLayout"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true">
+
+        <ImageView
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:id="@+id/timetableMenuButton"
+            android:layout_gravity="right"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/timetable_menu_text"
+            android:id="@+id/timetableMenuText"
+            android:gravity="center_horizontal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/newsLayout"
+        android:onClick="newsClicked"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/contactsLayout"
+        android:layout_alignStart="@+id/contactsLayout">
+
+        <ImageView
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:id="@+id/newsMenuButton"
+            android:layout_gravity="center_horizontal"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/newsMenuText"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/news_menu_text"
+            android:gravity="center_horizontal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/newsLayout"
+        android:layout_alignRight="@+id/timetableLayout"
+        android:layout_alignEnd="@+id/timetableLayout"
+        android:id="@+id/courseLayout"
+        android:onClick="courseClicked">
+
+        <ImageView
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:id="@+id/courseMenuButton"
+            android:layout_gravity="right"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/course_menu_text"
+            android:id="@+id/courseMenuText"
+            android:gravity="center_horizontal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/newsLayout"
+        android:layout_alignStart="@+id/newsLayout"
+        android:layout_marginTop="49dp"
+        android:id="@+id/mapLayout"
+        android:onClick="mapClicked">
+
+        <ImageView
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:id="@+id/mapMenuButton"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/map_menu_text"
+            android:id="@+id/mapMenuText"
+            android:gravity="center_horizontal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/mapLayout"
+        android:layout_alignRight="@+id/courseLayout"
+        android:layout_alignEnd="@+id/courseLayout"
+        android:id="@+id/libraryLayout"
+        android:onClick="libraryClicked">
+
+        <ImageView
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:id="@+id/libraryMenuButton"
+            android:layout_gravity="right"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/library_menu_text"
+            android:id="@+id/libraryMenuText"
+            android:layout_gravity="right"
+            android:gravity="center_horizontal" />
+    </LinearLayout>
 
 </RelativeLayout>

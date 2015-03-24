@@ -4,6 +4,8 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+
 
 
 public class MainMenu extends ActionBarActivity {
@@ -13,6 +15,56 @@ public class MainMenu extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
     }
+
+
+    //Method to go to Maps page
+    public void mapClicked(View view){
+        //Tempo code just to move between main menu to this page
+
+    }
+
+    //Method to go to Course page
+    public void courseClicked(View view){
+        //Tempo code just to move between main menu to this page
+
+    }
+
+    //Method to go to News page
+    public void newsClicked(View view){
+        //Tempo code just to move between main menu to this page
+
+    }
+
+    //Method to go to Library page
+    public void libraryClicked(View view){
+        //Tempo code just to move between main menu to this page
+
+    }
+
+    //Method to go to Contacts page
+    public void contactsClicked(View view){
+        //Tempo code just to move between main menu to this page
+
+    }
+
+    //Method to go to Timetables page
+    public void timetableClicked(View view){
+        //Tempo code just to move between main menu to this page
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     @Override
