@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">DIT</string>
 
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="timetable_menu_text">Timetables</string>
     <string name="contacts_menu_text">Contacts</string>
@@ -9,4 +8,6 @@
     <string name="course_menu_text">Courses</string>
     <string name="map_menu_text">Maps</string>
     <string name="library_menu_text">Library</string>
+    <string name="user_location_text">You are currently at</string>
+    <string name="menu_header_campus_name_text">Some Campus</string>
 </resources>
