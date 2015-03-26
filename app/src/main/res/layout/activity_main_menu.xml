@@ -1,216 +1,227 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
 
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:nestedScrollingEnabled="true"
-                android:onClick="libraryClicked"
-                android:paddingBottom="@dimen/activity_vertical_margin"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:paddingTop="@dimen/activity_vertical_margin"
-                tools:context=".MainMenu">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/blue_overlay"
+    android:alpha="5"
+    android:id="@+id/menu_scene_root"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainMenu">
 
 
     <RelativeLayout
-        android:id="@+id/relativeLayout"
+        android:id="@+id/locationContainer"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_alignParentTop="true"
-        android:layout_above="@+id/mapLayout"
+        android:layout_height="120dp"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true">
+        android:layout_alignParentTop="true">
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_above="@+id/menu_header_campus_name_text"
             android:layout_centerHorizontal="true"
-            android:layout_above="@+id/menu_header_campus_name_text">
+            android:orientation="horizontal">
 
             <ImageView
+                android:id="@+id/imageView"
                 android:layout_width="17dp"
                 android:layout_height="17dp"
-                android:src="@mipmap/ic_launcher"
-                android:id="@+id/imageView" />
+                android:src="@mipmap/ic_launcher" />
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:text="@string/user_location_text"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-
-                android:layout_gravity="center_horizontal"/>
+                android:textColor="@color/ditPrimaryTextColor"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
 
         </LinearLayout>
 
         <TextView
+            android:id="@+id/menu_header_campus_name_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/menu_header_campus_name_text"
-            android:id="@+id/menu_header_campus_name_text"
+            android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"/>
+            android:text="@string/menu_header_campus_name_text"
+            android:textColor="@color/ditSecondaryTextColor"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
     </RelativeLayout>
 
-    <LinearLayout
-        android:id="@+id/mapLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="44dp"
-        android:onClick="mapClicked"
-        android:orientation="vertical"
-        android:layout_above="@+id/newsLayout"
-        android:layout_alignLeft="@+id/newsLayout"
-        android:layout_alignStart="@+id/newsLayout">
 
-        <ImageView
-            android:id="@+id/mapMenuButton"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:src="@mipmap/ic_launcher"/>
-
-        <TextView
-            android:id="@+id/mapMenuText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:text="@string/map_menu_text"/>
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:id="@+id/libraryLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/mapLayout"
-        android:layout_alignEnd="@+id/courseLayout"
-        android:layout_alignRight="@+id/courseLayout"
-        android:onClick="libraryClicked"
-        android:orientation="vertical">
-
-        <ImageView
-            android:id="@+id/libraryMenuButton"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:src="@mipmap/ic_launcher"/>
-
-        <TextView
-            android:id="@+id/libraryMenuText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:text="@string/library_menu_text"/>
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:id="@+id/newsLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/contactsLayout"
-        android:layout_alignLeft="@+id/contactsLayout"
-        android:layout_alignStart="@+id/contactsLayout"
-        android:layout_marginBottom="44dp"
-        android:onClick="newsClicked"
-        android:orientation="vertical">
-
-        <ImageView
-            android:id="@+id/newsMenuButton"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:layout_gravity="center_horizontal"
-            android:src="@mipmap/ic_launcher"/>
-
-        <TextView
-            android:id="@+id/newsMenuText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center_horizontal"
-            android:text="@string/news_menu_text"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/courseLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="courseClicked"
-        android:orientation="vertical"
-        android:layout_below="@+id/mapLayout"
-        android:layout_alignLeft="@+id/timetableLayout"
-        android:layout_alignStart="@+id/timetableLayout">
-
-        <ImageView
-            android:id="@+id/courseMenuButton"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:src="@mipmap/ic_launcher"/>
-
-        <TextView
-            android:id="@+id/courseMenuText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:text="@string/course_menu_text"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/contactsLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="42dp"
-        android:layout_marginLeft="44dp"
-        android:layout_marginStart="44dp"
-        android:focusableInTouchMode="false"
-        android:onClick="contactsClicked"
-        android:orientation="vertical">
-
-        <ImageView
-            android:id="@+id/contactsMenuButton"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:src="@mipmap/ic_launcher"/>
-
-        <TextView
-            android:id="@+id/contactsMenuText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:text="@string/contacts_menu_text"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/timetableLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/contactsLayout"
-        android:layout_marginEnd="44dp"
-        android:layout_marginRight="44dp"
-        android:onClick="timetableClicked"
-        android:orientation="vertical">
+        android:layout_alignParentEnd="true"
+        android:layout_toStartOf="@+id/locationContainer"
+        android:layout_toLeftOf="@+id/locationContainer"
+        android:layout_marginTop="120dp">
 
-        <ImageView
-            android:id="@+id/timetableMenuButton"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:layout_gravity="start"
-            android:src="@mipmap/ic_launcher"/>
-
-        <TextView
-            android:id="@+id/timetableMenuText"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:id="@+id/mapsLayout"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:text="@string/timetable_menu_text"/>
-    </LinearLayout>
+            android:layout_above="@+id/newsLayout"
+            android:layout_alignLeft="@+id/newsLayout"
+            android:layout_alignStart="@+id/newsLayout"
+            android:layout_marginBottom="44dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/mapsMenuButton"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:src="@mipmap/ic_launcher" />
+
+            <TextView
+                android:id="@+id/mapsMenuText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:textColor="@color/ditPrimaryTextColor"
+                android:text="@string/maps_menu_text" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/libraryLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/mapsLayout"
+            android:layout_alignEnd="@+id/coursesLayout"
+            android:layout_alignRight="@+id/coursesLayout"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/libraryMenuButton"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:src="@mipmap/ic_launcher" />
+
+            <TextView
+                android:id="@+id/libraryMenuText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:textColor="@color/ditPrimaryTextColor"
+                android:text="@string/library_menu_text" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/newsLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/contactsLayout"
+            android:layout_alignLeft="@+id/contactsLayout"
+            android:layout_alignStart="@+id/contactsLayout"
+            android:layout_marginBottom="44dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/newsMenuButton"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@mipmap/ic_launcher" />
+
+            <TextView
+                android:id="@+id/newsMenuText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"
+                android:textColor="@color/ditPrimaryTextColor"
+                android:text="@string/news_menu_text" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/coursesLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/timetablesLayout"
+            android:layout_alignStart="@+id/timetablesLayout"
+            android:layout_below="@+id/mapsLayout"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/coursesMenuButton"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:src="@mipmap/ic_launcher" />
+
+            <TextView
+                android:id="@+id/coursesMenuText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:textColor="@color/ditPrimaryTextColor"
+                android:text="@string/courses_menu_text" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/contactsLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="42dp"
+            android:layout_marginLeft="44dp"
+            android:layout_marginStart="44dp"
+            android:focusableInTouchMode="false"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/contactsMenuButton"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:src="@mipmap/ic_launcher" />
+
+            <TextView
+                android:id="@+id/contactsMenuText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:textColor="@color/ditPrimaryTextColor"
+                android:text="@string/contacts_menu_text" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/timetablesLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/contactsLayout"
+            android:layout_marginEnd="44dp"
+            android:layout_marginRight="44dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/timetablesMenuButton"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_gravity="start"
+                android:src="@mipmap/ic_launcher" />
+
+            <TextView
+                android:id="@+id/timetablesMenuText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:textColor="@color/ditPrimaryTextColor"
+                android:text="@string/timetables_menu_text" />
+        </LinearLayout>
+    </RelativeLayout>
 
 </RelativeLayout>

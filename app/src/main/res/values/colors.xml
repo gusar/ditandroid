@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="ditPrimaryBackground">#031934</color>
+    <color name="ditSecondaryBackground">#85c3ff</color>
+    <color name="ditColorBackgroundAccent">#031934</color>
+    <color name="ditPrimaryTextColor">@color/md_grey_300</color>
+    <color name="ditSecondaryTextColor">@color/md_grey_400</color>
+
+</resources>

@@ -1,7 +1,25 @@
 package ie.dit.android.dit;
 
-/**
- * Created by harvey01 on 24/03/2015.
- */
-public class Contacts {
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.os.Build;
+import android.os.Bundle;
+import android.transition.Slide;
+
+
+@TargetApi(Build.VERSION_CODES.LOLLIPOP)
+public class Contacts extends Activity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_contacts);
+        setupWindowAnimations();
+    }
+
+
+    private void setupWindowAnimations() {
+        Slide slide = new Slide(5);
+        getWindow().setExitTransition(slide);
+    }
 }
