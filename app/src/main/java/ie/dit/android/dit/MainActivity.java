@@ -7,8 +7,6 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.transition.Slide;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
@@ -16,13 +14,13 @@ import android.widget.RelativeLayout;
 @TargetApi(Build.VERSION_CODES.LOLLIPOP)
 public class MainActivity extends Activity {
 
-    private ViewGroup menuSceneRoot;
-    private View news;
-    private View contacts;
-    private View courses;
-    private View maps;
-    private View library;
-    private View timetables;
+    protected ViewGroup menuSceneRoot;
+    protected View news;
+    protected View contacts;
+    protected View courses;
+    protected View maps;
+    protected View library;
+    protected View timetables;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,26 +114,5 @@ public class MainActivity extends Activity {
 
 
 
-    // OPTIONS MENU
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main_menu, menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }
