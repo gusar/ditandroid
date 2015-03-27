@@ -10,6 +10,8 @@ import android.transition.Slide;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.List;
+
 
 @TargetApi(Build.VERSION_CODES.LOLLIPOP)
 public class News extends ActionBarActivity {
@@ -20,15 +22,16 @@ public class News extends ActionBarActivity {
         setContentView(R.layout.activity_news);
         setupWindowAnimations();
 
+        // RECYCLERVIEW
         // Tutorial: binpress.com/tutorial/android-l-recyclerview-and-cardview-tutorial/156
         setContentView(R.layout.activity_news);
-        RecyclerView recList = (RecyclerView) findViewById(R.id.cardList);
-        recList.setHasFixedSize(true);
+        RecyclerView newsList = (RecyclerView) findViewById(R.id.cardList);
+        newsList.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        recList.setLayoutManager(linearLayoutManager);
+        newsList.setLayoutManager(linearLayoutManager);
 
-        //TODO: finish tutorial
+        //TODO: finish recyclerview
     }
 
 
