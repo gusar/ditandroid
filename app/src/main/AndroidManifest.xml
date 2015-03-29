@@ -6,24 +6,26 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme" >
         <activity
-            android:screenOrientation="portrait"
             android:name=".MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".Contacts"/>
-        <activity android:name=".Courses"/>
-        <activity android:name=".Library"/>
-        <activity android:name=".Maps"/>
-        <activity android:name=".News"/>
-
+        <activity android:name=".ContactsActivity" />
+        <activity android:name=".CoursesActivity" />
+        <activity android:name=".LibraryActivity" />
+        <activity android:name=".MapsActivity" />
+        <activity android:name=".NewsActivity" />
+        <activity
+            android:name=".BaseActivity"
+            android:label="@string/title_activity_base" >
+        </activity>
     </application>
 
 </manifest>

@@ -9,5 +9,8 @@
     <string name="maps_menu_text">Maps</string>
     <string name="library_menu_text">Library</string>
     <string name="user_location_text">You are currently at</string>
-    <string name="menu_header_campus_name_text">Some Campus</string>
+    <string name="menu_location_text">Some Campus</string>
+    <string name="title_activity_base">BaseActivity</string>
+
+    <string name="hello_world">Hello world!</string>
 </resources>

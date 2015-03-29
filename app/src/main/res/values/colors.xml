@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="ditPrimaryBackground">#031934</color>
-    <color name="ditSecondaryBackground">#85c3ff</color>
-    <color name="ditColorBackgroundAccent">#031934</color>
-    <color name="ditPrimaryTextColor">@color/md_grey_300</color>
-    <color name="ditSecondaryTextColor">@color/md_grey_400</color>
+    <color name="ditPrimaryBackgroundToolbar">@color/md_light_blue_900_transparent</color>
+    <color name="ditPrimaryBackground">@color/md_light_blue_900</color>
+    <color name="ditSecondaryBackground">@color/md_light_blue_900</color>
+    <color name="ditColorBackgroundAccent">@color/md_grey_100</color>
+    <color name="ditPrimaryTextColor">@color/md_grey_100</color>
+    <color name="ditSecondaryTextColor">@color/md_grey_200</color>
+    <color name="ditActionBarColor">@color/md_light_blue_900</color>
 
 </resources>

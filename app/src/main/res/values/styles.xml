@@ -1,9 +1,13 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:colorPrimary">@color/ditPrimaryBackground</item>
+        <item name="android:colorPrimaryDark">@color/ditSecondaryBackground</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@drawable/kevin_street_drawable</item>
+        <item name="android:windowTranslucentNavigation">true</item>
     </style>
 
 </resources>

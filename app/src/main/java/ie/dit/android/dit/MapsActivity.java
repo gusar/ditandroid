@@ -5,8 +5,6 @@ import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
 import android.transition.Slide;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
@@ -14,7 +12,7 @@ import java.util.ArrayList;
 
 
 @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-public class Maps extends Activity {
+public class MapsActivity extends Activity {
 
     ArrayList<Campus> campus = new ArrayList<Campus>();
 

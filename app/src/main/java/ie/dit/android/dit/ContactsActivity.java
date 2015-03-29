@@ -8,12 +8,12 @@ import android.transition.Slide;
 
 
 @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-public class Courses extends Activity {
+public class ContactsActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_courses);
+        setContentView(R.layout.activity_contacts);
         setupWindowAnimations();
     }
 

@@ -8,7 +8,7 @@ import android.transition.Slide;
 
 
 @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-public class Library extends Activity {
+public class LibraryActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
