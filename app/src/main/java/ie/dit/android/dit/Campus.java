@@ -5,9 +5,9 @@ import android.widget.ImageView;
 public class Campus {
 
     public String campusName;
-    public ImageView  campusImage;
+    public int  campusImage;
 
-    public Campus(String campusName, ImageView campusImage){
+    public Campus(String campusName, int campusImage){
         this.campusName = campusName;
         this.campusImage = campusImage;
     }

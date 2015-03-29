@@ -17,7 +17,7 @@ public class MapAdapter extends ArrayAdapter<Campus>{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        Campus campus = getItem(position);
+
 
         LayoutInflater mapInflater = LayoutInflater.from(getContext());
         View customView = mapInflater.inflate(R.layout.map_fragment, parent, false);
@@ -25,10 +25,12 @@ public class MapAdapter extends ArrayAdapter<Campus>{
         TextView mapText = (TextView) customView.findViewById(R.id.mapFragmentText);
         ImageView mapImage = (ImageView) customView.findViewById(R.id.mapFragmentImage);
 
+        Campus singleItem = getItem(position);
         //NEED TO FIX ON HOW TO ADD IMAGE
 
-        mapText.setText(campus.campusName);
-        //mapImage.setImageResource(campus.campusImage);
+        //String image = "R.drawable." + campus.campusImage;
+        mapText.setText(singleItem.campusName);
+        mapImage.setImageResource(singleItem.campusImage);
         return customView;
     }
 
