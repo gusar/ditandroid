@@ -6,10 +6,15 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.transition.Slide;
+import android.widget.Toast;
+
+import java.util.List;
 
 
 @TargetApi(Build.VERSION_CODES.LOLLIPOP)
 public class NewsActivity extends BaseActivity {
+
+    private List<News> news;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +26,10 @@ public class NewsActivity extends BaseActivity {
 
         setupWindowAnimations();
 
+        ProcessNews processNews = new ProcessNews();
+        processNews.execute();
+        handleNewsList(processNews.getNews(), processNews.getNewsString());
+
         // RECYCLERVIEW
         // Tutorial: binpress.com/tutorial/android-l-recyclerview-and-cardview-tutorial/156
         RecyclerView newsList = (RecyclerView) findViewById(R.id.cardList);
@@ -30,6 +39,52 @@ public class NewsActivity extends BaseActivity {
         newsList.setLayoutManager(linearLayoutManager);
 
         //TODO: finish recyclerview
+    }
+
+
+    // Show news titles as toasts
+    private void handleNewsList(List<News> news, String newsS) {
+        this.news = news;
+        final String newsStr;
+        newsStr = newsS;
+
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(NewsActivity.this, newsStr, Toast.LENGTH_LONG).show();
+                for(News news : NewsActivity.this.news) {
+                    Toast.makeText(NewsActivity.this, news.newsName, Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+    }
+
+
+/*    @Override
+    protected void onResume() {
+        super.onResume();
+        ProcessNews processNews = new ProcessNews();
+        processNews.execute();
+    }*/
+
+
+    public class ProcessNews extends NewsJsonData {
+        public ProcessNews() {
+            super();
+        }
+
+        public void execute() {
+            super.execute();
+            ProcessData processData = new ProcessData();
+            processData.execute();
+        }
+
+        public class ProcessData extends DownloadJsonData {
+            protected void onPostExecute(String webData) {
+                super.onPostExecute(webData);
+
+            }
+        }
     }
 
 
