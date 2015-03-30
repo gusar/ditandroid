@@ -3,11 +3,10 @@ package ie.dit.android.dit;
 
 import android.util.Log;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class ParseNewsJsonData extends GetRawData {
@@ -45,16 +44,34 @@ public class ParseNewsJsonData extends GetRawData {
 
     // Create a list of News objects
     public void processResult() {
-
         if (getJsonDownloadStatus() != DownloadStatus.OK) {
             Log.e(LOG_TAG, "Error downloading raw file");
             return;
         }
 
+        final String NEWS_ITEMS = "News";
+        final String NEWS_ID = "id";
+        final String NEWS_NAME = "newsName";
+        final String NEWS_DATE = "newsDate";
+        final String NEWS_IMAGE = "newsImage";
+        final String NEWS_DESC = "newsDesc";
+
         try {
-            GsonBuilder gsonBuilder = new GsonBuilder();
-            Gson gson = gsonBuilder.create();
-            news = Arrays.asList(gson.fromJson(getJsonData(), News[].class));
+            JSONObject jsonData = new JSONObject(getJsonData());
+            JSONArray itemsArray = jsonData.getJSONArray(NEWS_ITEMS);
+
+            for (int i = 0; i < itemsArray.length(); i++) {
+                JSONObject jsonNewsItem = itemsArray.getJSONObject(i);
+                long id = jsonNewsItem.getLong(NEWS_ID);
+                String title = jsonNewsItem.getString(NEWS_NAME);
+                String date = jsonNewsItem.getString(NEWS_DATE);
+                String imageUrl = jsonNewsItem.getString(NEWS_IMAGE);
+//                JSONObject image = jsonNewsItem.getJSONObject(NEWS_IMAGE);
+                String desc = jsonNewsItem.getString(NEWS_DESC);
+
+                News newsObject = new News(id, title, date, imageUrl, desc);
+                this.news.add(newsObject);
+            }
 
             // Print news objects' data
             for (News singleNews : news) {
