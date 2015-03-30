@@ -53,6 +53,7 @@ public class MapsActivity extends Activity {
                             startActivity(intent);
                         }else{
                             Toast.makeText(MapsActivity.this,"Not Available.", Toast.LENGTH_LONG).show();
+
                         }
                     }
                 }
