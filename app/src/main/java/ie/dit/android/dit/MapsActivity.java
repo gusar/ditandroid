@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 
 
@@ -49,6 +51,8 @@ public class MapsActivity extends Activity {
 
                         if(intent.resolveActivity(getPackageManager()) != null){
                             startActivity(intent);
+                        }else{
+                            Toast.makeText(MapsActivity.this,"Not Available.", Toast.LENGTH_LONG).show();
                         }
                     }
                 }
