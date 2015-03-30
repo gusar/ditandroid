@@ -10,14 +10,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class NewsJsonData extends GetRawJsonData {
+public class ParseNewsJsonData extends GetRawData {
 
-    private static final String LOG_TAG = NewsJsonData.class.getSimpleName();
+    private static final String LOG_TAG = ParseNewsJsonData.class.getSimpleName();
     public static final String SERVER_URL = "http://collegboi.me/Parse/returnNews.php";
     List<News> news;
 
     // Constructor
-    public NewsJsonData() {
+    public ParseNewsJsonData() {
         super(null);
         news = new ArrayList<News>();
     }
@@ -29,6 +29,7 @@ public class NewsJsonData extends GetRawJsonData {
     }
 
 
+    // Modify AsyncTask methods to make sure data can download before processing starts
     public class DownloadJsonData extends DownloadRawJsonData {
         protected void onPostExecute(String webData) {
             super.onPostExecute(webData);
@@ -41,8 +42,8 @@ public class NewsJsonData extends GetRawJsonData {
         }
     }
 
-    private String newsString;
-    //
+
+    // Create a list of News objects
     public void processResult() {
 
         if (getJsonDownloadStatus() != DownloadStatus.OK) {
@@ -53,8 +54,13 @@ public class NewsJsonData extends GetRawJsonData {
         try {
             GsonBuilder gsonBuilder = new GsonBuilder();
             Gson gson = gsonBuilder.create();
-            newsString = getJsonData();
             news = Arrays.asList(gson.fromJson(getJsonData(), News[].class));
+
+            // Print news objects' data
+            for (News singleNews : news) {
+                Log.v(LOG_TAG, singleNews.toString());
+            }
+
         } catch (Exception e) {
             Log.e(LOG_TAG, "Failed to parse JSON: " + e);
         }
@@ -62,9 +68,5 @@ public class NewsJsonData extends GetRawJsonData {
 
     public List<News> getNews() {
         return news;
-    }
-
-    public String getNewsString() {
-        return newsString;
     }
 }

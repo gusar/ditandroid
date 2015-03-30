@@ -23,12 +23,11 @@ public class NewsActivity extends BaseActivity {
 
         // Activate toolbar from BaseActivity
         activateToolbar();
-
         setupWindowAnimations();
 
         ProcessNews processNews = new ProcessNews();
         processNews.execute();
-        handleNewsList(processNews.getNews(), processNews.getNewsString());
+        handleNewsList(processNews.getNews());
 
         // RECYCLERVIEW
         // Tutorial: binpress.com/tutorial/android-l-recyclerview-and-cardview-tutorial/156
@@ -43,15 +42,12 @@ public class NewsActivity extends BaseActivity {
 
 
     // Show news titles as toasts
-    private void handleNewsList(List<News> news, String newsS) {
+    private void handleNewsList(List<News> news) {
         this.news = news;
-        final String newsStr;
-        newsStr = newsS;
 
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(NewsActivity.this, newsStr, Toast.LENGTH_LONG).show();
                 for(News news : NewsActivity.this.news) {
                     Toast.makeText(NewsActivity.this, news.newsName, Toast.LENGTH_LONG).show();
                 }
@@ -68,13 +64,13 @@ public class NewsActivity extends BaseActivity {
     }*/
 
 
-    public class ProcessNews extends NewsJsonData {
+    public class ProcessNews extends ParseNewsJsonData {
         public ProcessNews() {
             super();
         }
 
         public void execute() {
-            super.execute();
+//            super.execute();
             ProcessData processData = new ProcessData();
             processData.execute();
         }
@@ -82,7 +78,7 @@ public class NewsActivity extends BaseActivity {
         public class ProcessData extends DownloadJsonData {
             protected void onPostExecute(String webData) {
                 super.onPostExecute(webData);
-
+                news = getNews();
             }
         }
     }
