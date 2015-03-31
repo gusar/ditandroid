@@ -122,8 +122,9 @@ public class MainActivity extends BaseActivity {
         timetables.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO: open the timetables app
-            }
+               TimetablesIntent timetablesIntent = new TimetablesIntent();
+                timetablesIntent.execute();
+          }
         });
     }
 
