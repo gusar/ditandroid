@@ -123,7 +123,7 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                TimetablesIntent timetablesIntent = new TimetablesIntent();
-                timetablesIntent.execute();
+               timetablesIntent.execute();
           }
         });
     }

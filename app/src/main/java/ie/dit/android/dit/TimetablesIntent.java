@@ -14,9 +14,10 @@ public class TimetablesIntent extends Activity {
     }
 
     public void execute() {
-        Intent intent = getPackageManager().getLaunchIntentForPackage("ie.dit.android.dit");
 
         try {
+            Intent intent = getPackageManager().getLaunchIntentForPackage("ie.dit.android.dit");
+
             if (intent != null) {
                 // Activity found.
                 Log.v(LOG_TAG, "Activity Found");
@@ -27,7 +28,7 @@ public class TimetablesIntent extends Activity {
                 Log.v(LOG_TAG, "Activity Not Found");
                 intent = new Intent(Intent.ACTION_VIEW);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.setData(Uri.parse("market://details?id=" + "ie.dit.android.dit"));
+                intent.setData(Uri.parse("market://details?id=" + "com.mick88.dittimetable"));
                 startActivity(intent);
             }
         } catch (Exception e) {
