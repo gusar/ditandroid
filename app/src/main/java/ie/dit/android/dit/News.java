@@ -11,7 +11,7 @@ public class News implements Serializable {
     private String newsTitle;
     private String newsDate;
     private String newsImageURL;
-    private String newsDesc = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. " +
+    private static String newsDesc = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. " +
             "Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam " +
             "viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam " +
             "eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta " +
@@ -24,4 +24,46 @@ public class News implements Serializable {
             "penatibus et magnis dis parturient montes, nascetur ridiculus mus. In rutrum accumsan " +
             "ultricies. Mauris vitae nisi at sem facilisis semper ac in est.";
 
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public String getNewsTitle() {
+        return newsTitle;
+    }
+
+    public String getNewsDate() {
+        return newsDate;
+    }
+
+    public String getNewsImageURL() {
+        return newsImageURL;
+    }
+
+    public String getNewsDesc() {
+        return newsDesc;
+    }
+
+    public News(long id, String newsTitle, String newsDate, String newsImageURL/*, String newsDesc*/) {
+        this.id = id;
+        this.newsTitle = newsTitle;
+        this.newsDate = newsDate;
+        this.newsImageURL = newsImageURL;
+//        this.newsDesc = newsDesc;
+    }
+
+    @Override
+    public String toString() {
+        return "News{" +
+                "id=" + id +
+                ", newsTitle='" + newsTitle + '\'' +
+                ", newsDate='" + newsDate + '\'' +
+                ", newsImageURL='" + newsImageURL + '\'' +
+//                ", newsDesc='" + newsDesc + '\'' +
+                '}';
+    }
 }

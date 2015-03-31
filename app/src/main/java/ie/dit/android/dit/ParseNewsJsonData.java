@@ -51,9 +51,9 @@ public class ParseNewsJsonData extends GetRawData {
 
         final String NEWS_ITEMS = "News";
         final String NEWS_ID = "id";
-        final String NEWS_NAME = "name";
-        final String NEWS_DATE = "date";
-        final String NEWS_IMAGE = "newsURL";
+        final String NEWS_NAME = "newsTitle";
+        final String NEWS_DATE = "newsDate";
+        final String NEWS_IMAGE = "newsImageURL";
         final String NEWS_DESC = "newsDesc";
 
         try {
@@ -67,9 +67,9 @@ public class ParseNewsJsonData extends GetRawData {
                 String date = jsonNewsItem.getString(NEWS_DATE);
                 String imageUrl = jsonNewsItem.getString(NEWS_IMAGE);
 //                JSONObject image = jsonNewsItem.getJSONObject(NEWS_IMAGE);
-                String desc = jsonNewsItem.getString(NEWS_DESC);
+//                String desc = jsonNewsItem.getString(NEWS_DESC);
 
-                News newsObject = new News(id, title, date, imageUrl, desc);
+                News newsObject = new News(id, title, date, imageUrl/*, desc*/);
                 this.news.add(newsObject);
             }
 
