@@ -42,7 +42,7 @@ public class ParseNewsJsonData extends GetRawData {
     }
 
 
-    // Create a list of News objects
+    // Create a list of News objects.
     public void processResult() {
         if (getJsonDownloadStatus() != DownloadStatus.OK) {
             Log.e(LOG_TAG, "Error downloading raw file");

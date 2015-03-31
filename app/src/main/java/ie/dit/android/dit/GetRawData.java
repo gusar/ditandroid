@@ -60,7 +60,7 @@ public class GetRawData {
                 Log.v(LOG_TAG, "doInBackground: No URL Received");
                 return null;
             }
-
+            //
             // Try dowloading
             try {
                 URL url = new URL(params[0]);
