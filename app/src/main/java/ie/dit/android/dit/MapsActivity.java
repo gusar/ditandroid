@@ -27,7 +27,7 @@ public class MapsActivity extends Activity {
         setContentView(R.layout.activity_maps);
         setupWindowAnimations();
 
-        //add campus data
+        //add campus data.
         campus.add(new Campus("Aungier Street", R.drawable.aungier, 53.338505, -6.266364));
         campus.add(new Campus("Bolton Street", R.drawable.bolton, 53.351435, -6.269049));
         campus.add(new Campus("Cathal Brugha Street", R.drawable.cathal_brugha, 53.352226, -6.259616));
