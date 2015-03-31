@@ -8,6 +8,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.Reader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -19,6 +20,7 @@ public class GetRawData {
     private String jsonURL;
     private String jsonData;
     private DownloadStatus jsonDownloadStatus;
+    private Reader jsonReader;
 
 
     // Constructor
@@ -68,6 +70,8 @@ public class GetRawData {
                 urlConnection.setRequestMethod("GET");
                 urlConnection.connect();
                 InputStream inputStream = urlConnection.getInputStream();
+
+                jsonReader = new InputStreamReader(inputStream);
 
                 // Abort if no data returned
                 if (inputStream == null) {
@@ -119,5 +123,9 @@ public class GetRawData {
 
     public String getJsonData() {
         return jsonData;
+    }
+
+    public Reader getJsonReader() {
+        return jsonReader;
     }
 }

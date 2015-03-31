@@ -7,7 +7,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class ParseNewsJsonData extends GetRawData {
@@ -54,7 +53,7 @@ public class ParseNewsJsonData extends GetRawData {
         try {
             GsonBuilder gsonBuilder = new GsonBuilder();
             Gson gson = gsonBuilder.create();
-            news = Arrays.asList(gson.fromJson(getJsonData(), News[].class));
+            news = gson.fromJson(getJsonReader(), news.getClass());
 
             // Print news objects' data
             for (News singleNews : news) {
