@@ -49,7 +49,7 @@ public class NewsActivity extends BaseActivity {
             @Override
             public void run() {
                 for(News news : NewsActivity.this.news) {
-                    Toast.makeText(NewsActivity.this, news.getNewsName(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(NewsActivity.this, news.getName(), Toast.LENGTH_LONG).show();
                 }
             }
         });

@@ -51,9 +51,9 @@ public class ParseNewsJsonData extends GetRawData {
 
         final String NEWS_ITEMS = "News";
         final String NEWS_ID = "id";
-        final String NEWS_NAME = "newsName";
-        final String NEWS_DATE = "newsDate";
-        final String NEWS_IMAGE = "newsImage";
+        final String NEWS_NAME = "name";
+        final String NEWS_DATE = "date";
+        final String NEWS_IMAGE = "newsURL";
         final String NEWS_DESC = "newsDesc";
 
         try {
