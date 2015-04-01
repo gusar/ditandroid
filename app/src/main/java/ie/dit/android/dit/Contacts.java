@@ -1,7 +1,10 @@
 package ie.dit.android.dit;
 
+import java.io.Serializable;
 
-public class Contacts {
+public class Contacts implements Serializable{
+
+    private static final long serialVersionUID = 5L;
 
     private String name;
     private String department;
