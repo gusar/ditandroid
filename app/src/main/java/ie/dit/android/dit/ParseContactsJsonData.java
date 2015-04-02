@@ -1,11 +1,8 @@
 package ie.dit.android.dit;
 
-
 import android.util.Log;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +15,7 @@ public class ParseContactsJsonData extends GetRawData {
     // Constructor
     public ParseContactsJsonData() {
         super(null);
-        contacts = new ArrayList<>();
+        contacts = new ArrayList<Contacts>();
     }
 
     public void execute() {
@@ -62,7 +59,7 @@ public class ParseContactsJsonData extends GetRawData {
             JSONObject jsonData = new JSONObject(getJsonData());
             JSONArray itemsArray = jsonData.getJSONArray(CONTACTS_ITEMS);
 
-            for (int i = 0; i < itemsArray.length(); i++) {
+            for (int i = 0; i < itemsArray.length() - 1; i++) {
                 JSONObject jsonContactsItem = itemsArray.getJSONObject(i);
                 String name = jsonContactsItem.getString(CONTACTS_NAME);
                 String department = jsonContactsItem.getString(CONTACTS_DEPARTMENT);
@@ -76,8 +73,8 @@ public class ParseContactsJsonData extends GetRawData {
             }
 
             // Print contacts objects' data
-            for (Contacts contact : contacts) {
-                Log.v(LOG_TAG, contact.toString());
+            for (Contacts c : contacts) {
+                Log.v(LOG_TAG, c.toString());
             }
 
         } catch (Exception e) {
