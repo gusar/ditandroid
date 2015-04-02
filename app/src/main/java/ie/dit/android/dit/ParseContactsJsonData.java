@@ -59,7 +59,7 @@ public class ParseContactsJsonData extends GetRawData {
             JSONObject jsonData = new JSONObject(getJsonData());
             JSONArray itemsArray = jsonData.getJSONArray(CONTACTS_ITEMS);
 
-            for (int i = 0; i < itemsArray.length() - 1; i++) {
+            for (int i = 0; i < itemsArray.length(); i++) {
                 JSONObject jsonContactsItem = itemsArray.getJSONObject(i);
                 String name = jsonContactsItem.getString(CONTACTS_NAME);
                 String department = jsonContactsItem.getString(CONTACTS_DEPARTMENT);
