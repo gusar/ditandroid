@@ -4,4 +4,10 @@
     android:layout_height="match_parent"
     >
 
+    <view
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        class="android.support.v7.widget.RecyclerView"
+        android:id="@+id/contactRecyclerView"
+        android:layout_gravity="center_horizontal" />
 </LinearLayout>

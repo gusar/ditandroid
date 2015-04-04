@@ -21,6 +21,10 @@ public class Contacts implements Serializable{
         this.phoneNo = phoneNo;
     }
 
+    public Contacts(){
+
+    }
+
     public String getName() {
         return name;
     }
@@ -52,4 +56,23 @@ public class Contacts implements Serializable{
                 '}';
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public void setPhoneNo(String phoneNo) {
+        this.phoneNo = phoneNo;
+    }
 }
