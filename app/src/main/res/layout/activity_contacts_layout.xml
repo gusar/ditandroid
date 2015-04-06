@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name"
+            android:id="@+id/contactNameText"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Department"
+            android:id="@+id/contactDepartmentText"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/contactNameText"
+            android:layout_toEndOf="@+id/contactNameText"
+            android:layout_marginLeft="48dp"
+            android:layout_marginStart="48dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Phone No"
+            android:id="@+id/contactPhoneNoText"
+            android:layout_below="@+id/contactDepartmentText"
+            android:layout_alignLeft="@+id/contactDepartmentText"
+            android:layout_alignStart="@+id/contactDepartmentText"
+            android:layout_marginTop="30dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:id="@+id/contactEmailText"
+            android:layout_alignTop="@+id/contactPhoneNoText"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+    </RelativeLayout>
+
+</LinearLayout>
