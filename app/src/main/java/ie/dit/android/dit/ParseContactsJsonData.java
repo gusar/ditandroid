@@ -9,13 +9,13 @@ import java.util.List;
 public class ParseContactsJsonData extends GetRawData {
 
     private static final String LOG_TAG = ParseContactsJsonData.class.getSimpleName();
-    public static final String SERVER_URL = "http://collegboi.me/Parse/scrapContacts.php?firstName=d&lastName=d";
+    public static final String SERVER_URL = "http://collegboi.me/api/scrapContacts.php?firstName=d";
     List<Contacts> contacts;
 
     // Constructor
     public ParseContactsJsonData() {
         super(null);
-        contacts = new ArrayList<Contacts>();
+        contacts = new ArrayList<>();
     }
 
     public void execute() {
