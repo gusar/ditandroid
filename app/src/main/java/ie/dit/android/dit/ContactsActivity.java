@@ -1,8 +1,10 @@
 package ie.dit.android.dit;
 
 import android.annotation.TargetApi;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.transition.Slide;
@@ -41,14 +43,25 @@ public class ContactsActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        ProcessContacts processContacts = new ProcessContacts();
-        processContacts.execute();
+        // TODO: Replace bla with query variable when search code finished
+        String query = getSavedPreferenceData("bla"/*CONTACTS_QUERY*/);
+        if (query.length() < 0) {
+            ProcessContacts processContacts = new ProcessContacts(query);
+            processContacts.execute();
+        }
 
     }
 
+
+    private String getSavedPreferenceData(String key) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        return sharedPreferences.getString(key, "");
+    }
+
+
     public class ProcessContacts extends ParseContactsJsonData{
-        public ProcessContacts(){
-            super();
+        public ProcessContacts(String searchCriteria/*, boolean matchAll*/){
+            super(searchCriteria);
         }
 
         public void execute(){

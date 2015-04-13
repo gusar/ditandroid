@@ -1,8 +1,11 @@
 package ie.dit.android.dit;
 
+import android.net.Uri;
 import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,17 +14,34 @@ public class ParseContactsJsonData extends GetRawData {
     private static final String LOG_TAG = ParseContactsJsonData.class.getSimpleName();
     public static final String SERVER_URL = "http://collegboi.me/api/scrapContacts.php?firstName=d";
     List<Contacts> contacts;
+    private Uri destinationUri;
 
     // Constructor
-    public ParseContactsJsonData() {
+    public ParseContactsJsonData(String searchCriteria/*, boolean matchAll*/) {
         super(null);
-        contacts = new ArrayList<>();
+        createUri(searchCriteria/*, matchAll*/);
+        contacts = new ArrayList<Contacts>();
     }
 
     public void execute() {
-        super.setJsonURL(SERVER_URL);
+        super.setJsonURL(destinationUri.toString());
         DownloadJsonData downloadJsonData = new DownloadJsonData();
+        Log.v(LOG_TAG, "Built URI = " + destinationUri.toString());
         downloadJsonData.execute(SERVER_URL);
+    }
+
+
+    public boolean createUri(String searchCriteria/*, boolean matchAll*/) {
+        final String CONTACTS_BASE_URL = "http://collegboi.me/api/scrapContacts.php";
+        final String FIRST_NAME_PARAM = "firstName";
+        final String SECOND_NAME_PARAM = "secondName";
+
+        // Build URI
+        destinationUri = Uri.parse(CONTACTS_BASE_URL).buildUpon()
+                .appendQueryParameter(FIRST_NAME_PARAM, searchCriteria)
+                .build();
+
+        return destinationUri != null;
     }
 
 
