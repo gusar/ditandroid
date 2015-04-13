@@ -122,8 +122,8 @@ public class MainActivity extends BaseActivity {
         timetables.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               TimetablesIntent timetablesIntent = new TimetablesIntent();
-               timetablesIntent.execute();
+               TimetablesActivity timetablesActivity = new TimetablesActivity();
+               timetablesActivity.execute();
           }
         });
     }

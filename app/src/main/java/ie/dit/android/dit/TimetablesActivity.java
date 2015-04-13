@@ -1,25 +1,34 @@
 package ie.dit.android.dit;
 
-
 import android.app.Activity;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
+import android.net.Uri;
+import android.util.Log;
 
-import java.util.List;
 
 public class TimetablesActivity extends Activity {
+    public static final String LOG_TAG = TimetablesActivity.class.getSimpleName();
+
 
     public void execute() {
-        Intent timeIntent = new Intent(Intent.ACTION_VIEW);
+        Intent intent = getPackageManager().getLaunchIntentForPackage("ie.dit.android.dit");
 
-        PackageManager packageManager = context. getPackageManager().getInstalledPackages(0);
-        List<ResolveInfo> activities = packageManager.queryIntentActivities(timeIntent, 0);
-        boolean isIntentSafe = activities.size() > 0;
-
-        if (isIntentSafe) {
-            startActivity(timeIntent);
+        try {
+            if (intent != null) {
+                // Activity found.
+                Log.v(LOG_TAG, "Activity Found");
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            } else {
+                // Bring user to Play or choose an application.
+                Log.v(LOG_TAG, "Activity Not Found");
+                intent = new Intent(Intent.ACTION_VIEW);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.setData(Uri.parse("market://details?id=" + "ie.dit.android.dit"));
+                startActivity(intent);
+            }
+        } catch (Exception e) {
+            Log.e(LOG_TAG, "Failed to launch: " + e);
         }
     }
-
 }
