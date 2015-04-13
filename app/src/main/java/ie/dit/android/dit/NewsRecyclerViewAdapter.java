@@ -16,7 +16,7 @@ public class NewsRecyclerViewAdapter extends RecyclerView.Adapter<ImageViewHolde
 
     private List<News> mNewsList;
     private Context mContext;
-    private final String LOG_TAG = NewsRecyclerViewAdapter.class.getSimpleName();
+    private static final String LOG_TAG = NewsRecyclerViewAdapter.class.getSimpleName();
 
     public NewsRecyclerViewAdapter(Context context, List<News> newsList) {
         mContext = context;
