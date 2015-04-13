@@ -24,6 +24,7 @@
         <activity android:name=".LibraryActivity" />
         <activity android:name=".MapsActivity" />
         <activity android:name=".NewsActivity" />
+        <activity android:name=".TimetablesActivity" />
         <activity
             android:name=".BaseActivity"
             android:label="@string/title_activity_base" >
