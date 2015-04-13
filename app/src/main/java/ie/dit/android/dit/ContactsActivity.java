@@ -23,8 +23,8 @@ public class ContactsActivity extends BaseActivity {
 
         setupWindowAnimations();
 
-       // ProcessContacts processContacts = new ProcessContacts();
-        //processContacts.execute();
+       ProcessContacts processContacts = new ProcessContacts();
+        processContacts.execute();
 
 
         //RECYCLERVIEW

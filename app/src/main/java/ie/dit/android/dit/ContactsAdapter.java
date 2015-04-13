@@ -1,19 +1,20 @@
 package ie.dit.android.dit;
 
 
-import android.content.Context;
+
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-
+import java.util.List;
 
 
 public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHolder> {
-    ArrayList<Contacts> contacts;
+    List<Contacts> contacts;
 
     class ViewHolder extends RecyclerView.ViewHolder{
         public TextView contactName;
@@ -31,12 +32,14 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHo
         }
     }
 
-    public ContactsAdapter(){  //Context context, List<Contacts> contacts
+    public ContactsAdapter(){  //List<Contacts> contacts
         super();
 
+        //this.contacts = contacts;
 
         //TEST VALUES
-        contacts = new ArrayList<Contacts>();
+
+        contacts = new ArrayList<>();
         Contacts c = new Contacts();
         c.setName("Name 1");
         c.setDepartment("Dep 1");
@@ -45,6 +48,8 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHo
         c.setPhoneNo("3232322323");
 
         contacts.add(c);
+
+
 
 
     }
@@ -66,6 +71,10 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHo
         holder.contactEmail.setText(singleContact.getEmail());
         holder.contactPhoneNo.setText(singleContact.getPhoneNo());
 
+        Log.d("DATA","Name: " + singleContact.getName());
+        Log.d("DATA","Department: " + singleContact.getDepartment());
+        Log.d("DATA","Email: " + singleContact.getEmail());
+        Log.d("DATA","Phone: " + singleContact.getPhoneNo());
     }
 
     @Override
