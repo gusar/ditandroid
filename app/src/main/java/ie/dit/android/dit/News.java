@@ -7,7 +7,7 @@ public class News implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private long id;
+    private String id;
     private String newsTitle;
     private String newsDate;
     private String newsImageURL;
@@ -28,7 +28,7 @@ public class News implements Serializable {
         return serialVersionUID;
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
@@ -48,7 +48,7 @@ public class News implements Serializable {
         return newsDesc;
     }
 
-    public News(long id, String newsTitle, String newsDate, String newsImageURL/*, String newsDesc*/) {
+    public News(String id, String newsTitle, String newsDate, String newsImageURL/*, String newsDesc*/) {
         this.id = id;
         this.newsTitle = newsTitle;
         this.newsDate = newsDate;
@@ -59,11 +59,10 @@ public class News implements Serializable {
     @Override
     public String toString() {
         return "News{" +
-                "id=" + id +
+                "id='" + id + '\'' +
                 ", newsTitle='" + newsTitle + '\'' +
                 ", newsDate='" + newsDate + '\'' +
                 ", newsImageURL='" + newsImageURL + '\'' +
-//                ", newsDesc='" + newsDesc + '\'' +
                 '}';
     }
 }
