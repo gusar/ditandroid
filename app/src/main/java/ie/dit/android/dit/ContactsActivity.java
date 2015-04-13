@@ -27,6 +27,7 @@ public class ContactsActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contacts);
 
+        activateToolbar();
         setupWindowAnimations();
 
 

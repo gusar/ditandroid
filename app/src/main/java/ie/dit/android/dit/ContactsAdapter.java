@@ -34,17 +34,13 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsViewHolder> {
     @Override
     public void onBindViewHolder(ContactsViewHolder holder, int position) {
         Contacts singleContacts = contacts.get(position);
-        Log.d(LOG_TAG, "Processing: " + singleContacts.getName() + " --> " + Integer.toString(position));
+        Log.d(LOG_TAG, "Processing: " + singleContacts.getName() + " --> Index" + Integer.toString(position));
 
         holder.contactName.setText(singleContacts.getName());
         holder.contactDepartment.setText(singleContacts.getDepartment());
         holder.contactEmail.setText(singleContacts.getEmail());
         holder.contactPhoneNo.setText(singleContacts.getPhoneNo());
 
-        Log.d("DATA","Name: " + singleContacts.getName());
-        Log.d("DATA","Department: " + singleContacts.getDepartment());
-        Log.d("DATA","Email: " + singleContacts.getEmail());
-        Log.d("DATA","Phone: " + singleContacts.getPhoneNo());
     }
 
     @Override
