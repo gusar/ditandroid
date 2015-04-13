@@ -6,15 +6,19 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.transition.Slide;
-import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 @TargetApi(Build.VERSION_CODES.LOLLIPOP)
 public class ContactsActivity extends BaseActivity {
 
-    private List<Contacts> contacts;
+    private static final String LOG_TAG = ContactsActivity.class.getSimpleName();
+    private List<Contacts> contacts = new ArrayList<>();
+    private RecyclerView mRecyclerView;
+    private ContactsAdapter mContactsRecyclerViewAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,37 +27,24 @@ public class ContactsActivity extends BaseActivity {
 
         setupWindowAnimations();
 
-       ProcessContacts processContacts = new ProcessContacts();
-        processContacts.execute();
 
 
         //RECYCLERVIEW
         //Tutorial: icetea09.com/blog/2014/12/19/android-cardview-and-recyclerview-in-material-design/
-        RecyclerView contactsRecyclerView = (RecyclerView) findViewById(R.id.contactRecyclerView);
-        contactsRecyclerView.setHasFixedSize(true);
-
-        //layout manager
-        LinearLayoutManager contactLayoutManager = new LinearLayoutManager(this);
-        contactsRecyclerView.setLayoutManager(contactLayoutManager);
-
-        //create adapter with the contacts data as parameters
-        RecyclerView.Adapter contactAdapter = new ContactsAdapter();  //this, processContacts.getContacts()
-        contactsRecyclerView.setAdapter(contactAdapter);
+        // Setup RecyclerView
+        mRecyclerView = (RecyclerView) findViewById(R.id.contactRecyclerView);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mContactsRecyclerViewAdapter = new ContactsAdapter(ContactsActivity.this, new ArrayList<Contacts>());
+        mRecyclerView.setAdapter(mContactsRecyclerViewAdapter);
     }
 
-    private void handleContactsList(List<Contacts> contacts){
-        this.contacts = contacts;
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ProcessContacts processContacts = new ProcessContacts();
+        processContacts.execute();
 
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                for(Contacts contacts : ContactsActivity.this.contacts){
-                    Toast.makeText(ContactsActivity.this, contacts.getName(), Toast.LENGTH_LONG).show();
-                }
-            }
-        });
     }
-
 
     public class ProcessContacts extends ParseContactsJsonData{
         public ProcessContacts(){
@@ -70,7 +61,7 @@ public class ContactsActivity extends BaseActivity {
         public class ProcessData extends DownloadJsonData {
             protected void onPostExecute(String webData){
                 super.onPostExecute(webData);
-                contacts = getContacts();
+                mContactsRecyclerViewAdapter.loadNewData(getContacts());
             }
         }
     }

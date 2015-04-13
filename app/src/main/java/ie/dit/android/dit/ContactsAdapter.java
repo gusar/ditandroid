@@ -1,80 +1,50 @@
 package ie.dit.android.dit;
 
-
-
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-
-import java.util.ArrayList;
 import java.util.List;
 
 
-public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHolder> {
-    List<Contacts> contacts;
+public class ContactsAdapter extends RecyclerView.Adapter<ContactsViewHolder> {
+    private List<Contacts> contacts;
+    private Context mContext;
+    private final String LOG_TAG = ContactsAdapter.class.getSimpleName();
 
-    class ViewHolder extends RecyclerView.ViewHolder{
-        public TextView contactName;
-        public TextView contactDepartment;
-        public TextView contactEmail;
-        public TextView contactPhoneNo;
 
-        public ViewHolder(View itemView) {
-            super(itemView);
-            this.contactName = (TextView)itemView.findViewById(R.id.contactNameText);
-            this.contactDepartment = (TextView)itemView.findViewById(R.id.contactDepartmentText);
-            this.contactEmail = (TextView)itemView.findViewById(R.id.contactEmailText);
-            this.contactPhoneNo = (TextView)itemView.findViewById(R.id.contactPhoneNoText);
-
-        }
-    }
-
-    public ContactsAdapter(){  //List<Contacts> contacts
+    public ContactsAdapter(Context context, List<Contacts> contacts){
         super();
 
-        //this.contacts = contacts;
-
-        //TEST VALUES
-
-        contacts = new ArrayList<>();
-        Contacts c = new Contacts();
-        c.setName("Name 1");
-        c.setDepartment("Dep 1");
-        c.setEmail("sdadad@yahooo.com");
-        c.setLocation("Location 1");
-        c.setPhoneNo("3232322323");
-
-        contacts.add(c);
-
-
-
+        mContext = context;
+        this.contacts = contacts;
 
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ContactsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.activity_contacts_layout, parent, false);
-        return new ViewHolder(view);
+                .inflate(R.layout.activity_contacts_layout, null);
+        return new ContactsViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        Contacts singleContact = contacts.get(position);
+    public void onBindViewHolder(ContactsViewHolder holder, int position) {
+        Contacts singleContacts = contacts.get(position);
+        Log.d(LOG_TAG, "Processing: " + singleContacts.getName() + " --> " + Integer.toString(position));
 
-        holder.contactName.setText(singleContact.getName());
-        holder.contactDepartment.setText(singleContact.getDepartment());
-        holder.contactEmail.setText(singleContact.getEmail());
-        holder.contactPhoneNo.setText(singleContact.getPhoneNo());
+        holder.contactName.setText(singleContacts.getName());
+        holder.contactDepartment.setText(singleContacts.getDepartment());
+        holder.contactEmail.setText(singleContacts.getEmail());
+        holder.contactPhoneNo.setText(singleContacts.getPhoneNo());
 
-        Log.d("DATA","Name: " + singleContact.getName());
-        Log.d("DATA","Department: " + singleContact.getDepartment());
-        Log.d("DATA","Email: " + singleContact.getEmail());
-        Log.d("DATA","Phone: " + singleContact.getPhoneNo());
+        Log.d("DATA","Name: " + singleContacts.getName());
+        Log.d("DATA","Department: " + singleContacts.getDepartment());
+        Log.d("DATA","Email: " + singleContacts.getEmail());
+        Log.d("DATA","Phone: " + singleContacts.getPhoneNo());
     }
 
     @Override
@@ -82,7 +52,14 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHo
         return contacts.size();
     }
 
+    public void loadNewData(List<Contacts> newContacts){
+        contacts = newContacts;
+        notifyDataSetChanged();
+    }
 
+    public Contacts getContacts(int position){
+        return(null != contacts ? contacts.get(position) : null);
+    }
 
 
 }
