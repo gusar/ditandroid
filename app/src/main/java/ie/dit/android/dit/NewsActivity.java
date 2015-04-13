@@ -6,15 +6,19 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.transition.Slide;
-import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 @TargetApi(Build.VERSION_CODES.LOLLIPOP)
 public class NewsActivity extends BaseActivity {
 
-    private List<News> news;
+    private static final String LOG_TAG = NewsActivity.class.getSimpleName();
+    private List<News> news = new ArrayList<News>();
+    private RecyclerView mRecyclerView;
+    private NewsRecyclerViewAdapter mNewsRecyclerViewAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,45 +29,28 @@ public class NewsActivity extends BaseActivity {
         activateToolbar();
         setupWindowAnimations();
 
-        ProcessNews processNews = new ProcessNews();
-        processNews.execute();
-        handleNewsList(processNews.getNews());
+        // Setup RecyclerView
+        mRecyclerView = (RecyclerView) findViewById(R.id.news_recycler_view);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mNewsRecyclerViewAdapter = new NewsRecyclerViewAdapter(NewsActivity.this, new ArrayList<News>());
+        mRecyclerView.setAdapter(mNewsRecyclerViewAdapter);
 
-        // RECYCLERVIEW
-        // Tutorial: binpress.com/tutorial/android-l-recyclerview-and-cardview-tutorial/156
-        RecyclerView newsList = (RecyclerView) findViewById(R.id.cardList);
-        newsList.setHasFixedSize(true);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        newsList.setLayoutManager(linearLayoutManager);
+//        mRecyclerView.addOnItemTouchListener(new RecyclerItemClickLi);
 
-        //TODO: finish recyclerview
+
     }
 
 
-    // Show news titles as toasts
-    private void handleNewsList(List<News> news) {
-        this.news = news;
-
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                for(News news : NewsActivity.this.news) {
-                    Toast.makeText(NewsActivity.this, news.getNewsTitle(), Toast.LENGTH_LONG).show();
-                }
-            }
-        });
-    }
-
-
-/*    @Override
+    // On activity resume download and parse data
+    @Override
     protected void onResume() {
         super.onResume();
         ProcessNews processNews = new ProcessNews();
         processNews.execute();
-    }*/
+    }
 
 
+    // Download and parse data; create news objects
     public class ProcessNews extends ParseNewsJsonData {
         public ProcessNews() {
             super();
@@ -78,7 +65,7 @@ public class NewsActivity extends BaseActivity {
         public class ProcessData extends DownloadJsonData {
             protected void onPostExecute(String webData) {
                 super.onPostExecute(webData);
-                news = getNews();
+                mNewsRecyclerViewAdapter.loadNewData(getNews());
             }
         }
     }

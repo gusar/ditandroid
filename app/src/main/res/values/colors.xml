@@ -8,5 +8,6 @@
     <color name="ditPrimaryTextColor">@color/md_grey_100</color>
     <color name="ditSecondaryTextColor">@color/md_grey_200</color>
     <color name="ditActionBarColor">@color/md_light_blue_900</color>
+    <color name="ditCardBackgroundColor">@color/md_cyan_50_transparent</color>
 
 </resources>

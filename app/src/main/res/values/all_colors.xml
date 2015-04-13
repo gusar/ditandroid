@@ -119,6 +119,7 @@
 
     <!-- cyan -->
     <color name="md_cyan_50">#e0f7fa</color>
+    <color name="md_cyan_50_transparent">#50e0f7fa</color>
     <color name="md_cyan_100">#b2ebf2</color>
     <color name="md_cyan_200">#80deea</color>
     <color name="md_cyan_300">#4dd0e1</color>
