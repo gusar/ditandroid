@@ -12,7 +12,7 @@ import java.util.List;
 public class ParseNewsJsonData extends GetRawData {
 
     private static final String LOG_TAG = ParseNewsJsonData.class.getSimpleName();
-    public static final String SERVER_URL = "http://collegboi.me/Parse/returnNews.php";
+    public static final String SERVER_URL = "http://collegboi.me/api/returnNewsAndroid.php";
     List<News> news;
 
     // Constructor
@@ -49,7 +49,7 @@ public class ParseNewsJsonData extends GetRawData {
             return;
         }
 
-        final String NEWS_ITEMS = "News";
+        final String NEWS_ITEMS = "";
         final String NEWS_ID = "id";
         final String NEWS_NAME = "newsTitle";
         final String NEWS_DATE = "newsDate";
@@ -57,12 +57,13 @@ public class ParseNewsJsonData extends GetRawData {
         final String NEWS_DESC = "newsDesc";
 
         try {
-            JSONObject jsonData = new JSONObject(getJsonData());
-            JSONArray itemsArray = jsonData.getJSONArray(NEWS_ITEMS);
+//            JSONObject jsonData = new JSONObject(getJsonData());
+//            JSONArray itemsArray = jsonData.getJSONArray();
+            JSONArray itemsArray = new JSONArray(getJsonData());
 
             for (int i = 0; i < itemsArray.length(); i++) {
                 JSONObject jsonNewsItem = itemsArray.getJSONObject(i);
-                long id = jsonNewsItem.getLong(NEWS_ID);
+                String id = jsonNewsItem.getString(NEWS_ID);
                 String title = jsonNewsItem.getString(NEWS_NAME);
                 String date = jsonNewsItem.getString(NEWS_DATE);
                 String imageUrl = jsonNewsItem.getString(NEWS_IMAGE);
