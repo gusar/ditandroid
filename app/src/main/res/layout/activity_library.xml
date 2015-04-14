@@ -3,4 +3,17 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <include
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        layout="@layout/toolbar"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/app_bar" />
+
+    <view
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        class="android.support.v7.widget.RecyclerView"
+        android:id="@+id/libraryRecyclerView"
+        android:layout_gravity="center_horizontal" />
 </LinearLayout>
