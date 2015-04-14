@@ -30,13 +30,12 @@ public class ContactsActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contacts);
 
-        activateToolbar();
+        activateToolbarWithHomeEnabled();
         setupWindowAnimations();
 
 
 
         //RECYCLERVIEW
-        //Tutorial: icetea09.com/blog/2014/12/19/android-cardview-and-recyclerview-in-material-design/
         // Setup RecyclerView
         mRecyclerView = (RecyclerView) findViewById(R.id.contactRecyclerView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -47,9 +46,8 @@ public class ContactsActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        // TODO: Replace bla with query variable when search code finished
-        String query = getSavedPreferenceData("bla"/*CONTACTS_QUERY*/);
-        if (query.length() < 0) {
+        String query = getSavedPreferenceData(USER_QUERY);
+        if (query.length() > 0) {
             ProcessContacts processContacts = new ProcessContacts(query);
             processContacts.execute();
         }
@@ -69,7 +67,6 @@ public class ContactsActivity extends BaseActivity {
         }
 
         public void execute(){
-            //   super.execute();
             ProcessData processData = new ProcessData();
             processData.execute();
 

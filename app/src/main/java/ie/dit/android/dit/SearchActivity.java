@@ -36,7 +36,7 @@ public class SearchActivity extends BaseActivity {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                sharedPreferences.edit().putString(USER_QUERY, query).commit();
+                sharedPreferences.edit().putString(USER_QUERY, query).apply();
                 mSearchView.clearFocus();
                 finish();
                 return true;
