@@ -11,8 +11,7 @@ import java.util.List;
 
 public class ParseContactsJsonData extends GetRawData {
 
-    private static final String LOG_TAG = ParseContactsJsonData.class.getSimpleName();
-    public static final String SERVER_URL = "http://collegboi.me/api/scrapContacts.php?firstName=d";
+    private static final String LOG_TAG = ParseContactsJsonData.class.getSimpleName();;
     List<Contacts> contacts;
     private Uri destinationUri;
 
@@ -23,12 +22,6 @@ public class ParseContactsJsonData extends GetRawData {
         contacts = new ArrayList<Contacts>();
     }
 
-    public void execute() {
-        super.setJsonURL(destinationUri.toString());
-        DownloadJsonData downloadJsonData = new DownloadJsonData();
-        Log.v(LOG_TAG, "Built URI = " + destinationUri.toString());
-        downloadJsonData.execute(SERVER_URL);
-    }
 
 
     public boolean createUri(String searchCriteria/*, boolean matchAll*/) {
@@ -53,7 +46,7 @@ public class ParseContactsJsonData extends GetRawData {
         }
 
         protected String doInBackground(String... params) {
-            String[] par = { SERVER_URL };
+            String[] par = { destinationUri.toString() };
             return super.doInBackground(par);
         }
     }
@@ -78,6 +71,7 @@ public class ParseContactsJsonData extends GetRawData {
         try {
             JSONObject jsonData = new JSONObject(getJsonData());
             JSONArray itemsArray = jsonData.getJSONArray(CONTACTS_ITEMS);
+//            JSONArray itemsArray = new JSONArray(getJsonData());
 
             for (int i = 0; i < itemsArray.length(); i++) {
                 JSONObject jsonContactsItem = itemsArray.getJSONObject(i);

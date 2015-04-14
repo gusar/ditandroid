@@ -9,6 +9,8 @@ import android.widget.LinearLayout;
 public class BaseActivity extends ActionBarActivity {
 
     private Toolbar toolbar;
+    public static final String USER_QUERY = "USER_QUERY";
+
 
 
     // Display toolbar and set top margin as status bar height

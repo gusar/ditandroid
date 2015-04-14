@@ -1,0 +1,20 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:dit="http://schemas.android.com/apk/res-auto"
+
+      xmlns:tools="http://schemas.android.com/tools"
+
+      tools:context="ie.dit.android.dit.SearchActivity">
+
+    <item android:id="@+id/action_settings"
+          android:title="@string/action_settings"
+          android:orderInCategory="100"
+          dit:showAsAction="never"/>
+
+    <item
+        android:id="@+id/search_view"
+        android:icon="@android:drawable/ic_menu_search"
+        android:title="@string/search_menu"
+        dit:actionViewClass="android.widget.SearchView"
+        dit:showAsAction="always" />
+
+</menu>
