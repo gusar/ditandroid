@@ -17,7 +17,7 @@ public class ContactsViewHolder extends RecyclerView.ViewHolder{
             this.contactName = (TextView)itemView.findViewById(R.id.contactNameText);
             this.contactDepartment = (TextView)itemView.findViewById(R.id.contactDepartmentText);
             this.contactEmail = (TextView)itemView.findViewById(R.id.contactEmailText);
-            this.contactPhoneNo = (TextView)itemView.findViewById(R.id.contactPhoneNoText);
+            this.contactPhoneNo = (TextView)itemView.findViewById(R.id.courseFONameNumText);
 
         }
 

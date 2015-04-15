@@ -26,7 +26,7 @@ public class NewsActivity extends BaseActivity {
         setContentView(R.layout.activity_news);
 
         // Activate toolbar from BaseActivity
-        activateToolbar();
+        activateToolbarWithHomeEnabled();
         setupWindowAnimations();
 
         // Setup RecyclerView

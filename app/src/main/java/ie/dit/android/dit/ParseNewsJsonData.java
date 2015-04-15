@@ -21,12 +21,6 @@ public class ParseNewsJsonData extends GetRawData {
         news = new ArrayList<News>();
     }
 
-    public void execute() {
-        super.setJsonURL(SERVER_URL);
-        DownloadJsonData downloadJsonData = new DownloadJsonData();
-        downloadJsonData.execute(SERVER_URL);
-    }
-
 
     // Modify AsyncTask methods to make sure data can download before processing starts
     public class DownloadJsonData extends DownloadRawJsonData {

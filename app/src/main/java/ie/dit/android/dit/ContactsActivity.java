@@ -1,6 +1,7 @@
 package ie.dit.android.dit;
 
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
@@ -8,6 +9,8 @@ import android.preference.PreferenceManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.transition.Slide;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,13 +30,12 @@ public class ContactsActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contacts);
 
-        activateToolbar();
+        activateToolbarWithHomeEnabled();
         setupWindowAnimations();
 
 
 
         //RECYCLERVIEW
-        //Tutorial: icetea09.com/blog/2014/12/19/android-cardview-and-recyclerview-in-material-design/
         // Setup RecyclerView
         mRecyclerView = (RecyclerView) findViewById(R.id.contactRecyclerView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -44,9 +46,8 @@ public class ContactsActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        // TODO: Replace bla with query variable when search code finished
-        String query = getSavedPreferenceData("bla"/*CONTACTS_QUERY*/);
-        if (query.length() < 0) {
+        String query = getSavedPreferenceData(USER_QUERY);
+        if (query.length() > 0) {
             ProcessContacts processContacts = new ProcessContacts(query);
             processContacts.execute();
         }
@@ -66,7 +67,6 @@ public class ContactsActivity extends BaseActivity {
         }
 
         public void execute(){
-            //   super.execute();
             ProcessData processData = new ProcessData();
             processData.execute();
 
@@ -85,5 +85,30 @@ public class ContactsActivity extends BaseActivity {
     private void setupWindowAnimations() {
         Slide slide = new Slide(5);
         getWindow().setExitTransition(slide);
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        if (id == R.id.menu_search) {
+            Intent intent = new Intent(this, SearchActivity.class);
+            startActivity(intent);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

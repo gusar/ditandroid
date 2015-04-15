@@ -122,8 +122,11 @@ public class MainActivity extends BaseActivity {
         timetables.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               TimetablesActivity timetablesActivity = new TimetablesActivity();
-               timetablesActivity.execute();
+                final String packageName = "com.android.calculator2";
+                final String packageActivityName = "com.android.calculator2.Calculator";
+                Intent intent = new Intent();
+                intent.setClassName(packageName, packageActivityName);
+                startActivity(intent);
           }
         });
     }

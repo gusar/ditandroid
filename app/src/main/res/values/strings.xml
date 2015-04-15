@@ -1,15 +1,21 @@
 <resources>
-    <string name="app_name">DIT</string>
 
+    <string name="app_name">DIT</string>
     <string name="action_settings">Settings</string>
     <string name="timetables_menu_text">Timetables</string>
     <string name="contacts_menu_text">Contacts</string>
     <string name="news_menu_text">News</string>
     <string name="courses_menu_text">Courses</string>
     <string name="maps_menu_text">Maps</string>
+    <string name="action_search">Search</string>
     <string name="library_menu_text">Library</string>
     <string name="user_location_text">You are currently at</string>
     <string name="menu_location_text">Some Campus</string>
     <string name="title_activity_base">BaseActivity</string>
     <string name="map_fragment_text">Text</string>
+    <string name="title_activity_search">SearchActivity</string>
+    <string name="search_menu">Search</string>
+    <string name="searchable_label">Search Query</string>
+    <string name="seaerchable_hint">Search here</string>
+
 </resources>
