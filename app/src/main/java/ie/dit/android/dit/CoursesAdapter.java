@@ -17,7 +17,6 @@ public class CoursesAdapter extends RecyclerView.Adapter<CoursesViewHolder> {
 
     public CoursesAdapter(Context context, List<Courses> courses){
         super();
-
         mContext = context;
         this.courses = courses;
 
